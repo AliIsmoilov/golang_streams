@@ -1,0 +1,91 @@
+syntax = "proto3";
+
+package calculatepb;
+
+option go_package = "app/calculatepb";
+
+
+service CalculateService {
+
+    rpc Sum(SumRequest) returns (SumResponse) {}
+
+    // Server-side stream
+    rpc PrimeDecomposition(PrimeDecompositionRequest) returns (stream PrimeDecompositionResponse) {}
+    
+    // Client-side stream
+    rpc ComputeAvarage(stream ComputeAvarageRequest) returns (ComputeAvarageResponse) {}
+
+    // Bi-Directional stream
+    rpc FindMaximum(stream FindMaximumRequest) returns (stream FindMaximumResponse) {}
+
+    rpc SquareRoot(Squareroot) returns (Squareroot) {}
+
+    rpc PerfectNumber(PerfectNumberRequest) returns (stream PerfectNumberResponse) {};
+
+    rpc TotalNumber(stream TotalNumberRequest) returns (TotalNumberResponse) {};
+
+    rpc FindMinimum(stream FindMinimumRequest) returns (stream FindMinimumResponse) {};
+}
+
+message TotalNumberRequest {
+    int32 number = 1;
+}
+
+message TotalNumberResponse {
+    double total = 1;
+}
+
+message FindMinimumRequest {
+    int32 number = 1;
+}
+
+message FindMinimumResponse {
+    double minimum = 1;
+}
+
+
+message SumRequest {
+    int32 first_number = 1;
+    int32 second_number = 2;
+}
+
+message SumResponse {
+    int32 result = 1;
+}
+
+message PrimeDecompositionRequest {
+    int32 number = 1;
+}
+
+message PrimeDecompositionResponse {
+    int32 result = 1;
+}
+
+message ComputeAvarageRequest {
+    int32 number = 1;
+}
+
+message ComputeAvarageResponse {
+    double avarage = 1;
+}
+
+message FindMaximumRequest {
+    int32 number = 1;
+}
+
+message FindMaximumResponse {
+    double maximum = 1;
+}
+
+message Squareroot {
+    int32 number = 1;
+}
+
+
+message PerfectNumberRequest {
+    int32 number = 1;
+}
+
+message PerfectNumberResponse {
+    int32 number = 1;
+}
